@@ -22,6 +22,9 @@ namespace WebApplication1.Controllers
 	    }
 
 		// Maps to http://localhost:61589/
+        //cancelation tokens
+        //react .js front end
+        //facebook fixed data table.
 		[Route]
 		public ViewResult Index()
 		{
@@ -33,7 +36,9 @@ namespace WebApplication1.Controllers
 	    {
 	        Response.ContentType = "text/event-stream";
             var liveConnection = new TaskCompletionSource<bool>();
-            var queue = new BlockingCollection<string>();
+            var queue = new BlockingCollection<string>();//for producer/consumer pattern
+            //producer adds items to the collection
+            //consumer uses the getconsumingenuerable
 
 	        var events = _messageSource.Messages();
 	        events.Connect();
@@ -41,18 +46,18 @@ namespace WebApplication1.Controllers
 	        var subscription = events
 	            .TakeWhile(x => Response.IsClientConnected)
 	            .Finally(() => queue.CompleteAdding())
-	            .SubscribeOn(TaskPoolScheduler.Default)
+	            .SubscribeOn(TaskPoolScheduler.Default)// if you don't do this it won't be a non blocking subscribe and you will never hit the using code.
 	            .Subscribe(
-	                serverEvent => queue.Add(serverEvent),
-	                ex => liveConnection.TrySetException(ex),
-	                () => liveConnection.TrySetResult(false)
+	                serverEvent => queue.Add(serverEvent),//on next
+	                ex => liveConnection.TrySetException(ex),//on error
+	                () => liveConnection.TrySetResult(false)// on complete
 	            );
 
 	        using (subscription)
 	        {
 	            var consumer = Task.Run(async () =>
 	            {
-                    foreach (string message in queue.GetConsumingEnumerable())
+                    foreach (string message in queue.GetConsumingEnumerable())//forever looping until complete adding is called.
                     {
                         var success = await _eventWriter.WriteEvent(message, Response).ConfigureAwait(false);
                         if (!success)
@@ -62,7 +67,7 @@ namespace WebApplication1.Controllers
                     }
                 });
 	            await consumer.ConfigureAwait(false);
-	            await liveConnection.Task.ConfigureAwait(false);
+	            await liveConnection.Task.ConfigureAwait(false);//usually u want to always do this for effenciy reasons. unless you need the sync context.
 	        }
 	    }
 	}

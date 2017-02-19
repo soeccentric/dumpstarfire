@@ -4,48 +4,43 @@ using System.Text;
 
 namespace RabbitMqExp
 {
-  class Program
-  {
-    static void Main(string[] args)
+    class Program
     {
-      Console.WriteLine(" Press [q] to exit.");
-      Console.WriteLine("enter message");
-
-      var factory = new ConnectionFactory() { HostName = "localhost" };
-
-      using (var connection = factory.CreateConnection())
-      using (var channel = connection.CreateModel())
-      {
-        channel.QueueDeclare(queue: "hello",
-                              durable: false,
-                              exclusive: false,
-                              autoDelete: false,
-                              arguments: null);
-        string line;
-        do
+        static void Main(string[] args)
         {
-          //Check for exit conditions
-          line = Console.ReadLine();
-          if (!string.IsNullOrEmpty(line))
-          {
-            var body = Encoding.UTF8.GetBytes(line);
+            Console.WriteLine(" Press [q] to exit.");
+            Console.WriteLine("enter message");
 
-            channel.BasicPublish(exchange: "",
-                                 routingKey: "hello",
-                                 basicProperties: null,
-                                 body: body);
-            Console.WriteLine($"[x] Sent {line}");
-          }
+            var factory = new ConnectionFactory() { HostName = "localhost" };
 
-      
-        } while (!string.IsNullOrWhiteSpace(line) && line.ToLower() != "q");
+            using (var connection = factory.CreateConnection())
+            using (var channel = connection.CreateModel())
+            {
+                channel.QueueDeclare(queue: "hello",
+                                      durable: false,
+                                      exclusive: false,
+                                      autoDelete: false,
+                                      arguments: null);
+                string line;
+                do
+                {
+                    //Check for exit conditions
+                    line = Console.ReadLine();
+                    if (!string.IsNullOrEmpty(line))
+                    {
+                        var body = Encoding.UTF8.GetBytes(line);
 
+                        channel.BasicPublish(exchange: "",
+                                             routingKey: "hello",
+                                             basicProperties: null,
+                                             body: body);
+                        Console.WriteLine($"[x] Sent {line}");
+                    }
 
+                } while (!string.IsNullOrWhiteSpace(line) && line.ToLower() != "q");
 
-      }
-
-
+            }
+        }
     }
-  }
 }
 
