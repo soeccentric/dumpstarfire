@@ -2,16 +2,16 @@
 
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@ViewBag.Title</title>
-	@RenderSection(name : "styles", required: false)
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @RenderSection(name : "styles", required: false)
 </head>
 <body>
-	<main>
-		@RenderBody()
-	</main>
+<main>
+    @RenderBody()
+</main>
+<a href="~/Views/Shared/_Layout.cshtml">~/Views/Shared/_Layout.cshtml</a>
 
-	@RenderSection(name : "scripts", required: false)
 </body>
 </html>
