@@ -1,8 +1,0 @@
-Created 2016-04-04
-
-· Created in Visual Studio 2015.
-· MVC 4.
-· Targets .NET 4.6.1.
-· Most recent versions of all NuGet pacakges.
-· Removed Modernizr, jQuery, Bootstrap and all client-side libraries.
-· Uses route attributes instead of MVC routing.
