@@ -10,7 +10,7 @@ module.exports = {
 	exclude: /(node_modules|bower_components)/,
 	loader: 'babel-loader',
 	query: {
-	  presets: ['env']
+	  presets: ['env', 'react']
 	}
       }
     ]
