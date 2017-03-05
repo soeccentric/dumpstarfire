@@ -156,47 +156,8 @@
     <Compile Include="Services\MessageSource.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\bundle.js" />
     <Content Include="Global.asax" />
-    <Content Include="react-redux-starter-kit\.gitignore" />
-    <Content Include="react-redux-starter-kit\bin\compile.js" />
-    <Content Include="react-redux-starter-kit\bin\dev-server.js" />
-    <Content Include="react-redux-starter-kit\config\environments.config.js" />
-    <Content Include="react-redux-starter-kit\config\karma.config.js" />
-    <Content Include="react-redux-starter-kit\config\project.config.js" />
-    <Content Include="react-redux-starter-kit\config\webpack.config.js" />
-    <Content Include="react-redux-starter-kit\postcss.config.js" />
-    <Content Include="react-redux-starter-kit\public\favicon.ico" />
-    <Content Include="react-redux-starter-kit\public\humans.txt" />
-    <Content Include="react-redux-starter-kit\public\robots.txt" />
-    <Content Include="react-redux-starter-kit\server\main.js" />
-    <Content Include="react-redux-starter-kit\src\components\Header\Header.js" />
-    <Content Include="react-redux-starter-kit\src\components\Header\index.js" />
-    <Content Include="react-redux-starter-kit\src\containers\AppContainer.js" />
-    <Content Include="react-redux-starter-kit\src\index.html" />
-    <Content Include="react-redux-starter-kit\src\layouts\CoreLayout\CoreLayout.js" />
-    <Content Include="react-redux-starter-kit\src\layouts\CoreLayout\index.js" />
-    <Content Include="react-redux-starter-kit\src\main.js" />
-    <Content Include="react-redux-starter-kit\src\routes\Counter\components\Counter.js" />
-    <Content Include="react-redux-starter-kit\src\routes\Counter\containers\CounterContainer.js" />
-    <Content Include="react-redux-starter-kit\src\routes\Counter\index.js" />
-    <Content Include="react-redux-starter-kit\src\routes\Counter\modules\counter.js" />
-    <Content Include="react-redux-starter-kit\src\routes\Home\assets\Duck.jpg" />
-    <Content Include="react-redux-starter-kit\src\routes\Home\components\HomeView.js" />
-    <Content Include="react-redux-starter-kit\src\routes\Home\index.js" />
-    <Content Include="react-redux-starter-kit\src\routes\index.js" />
-    <Content Include="react-redux-starter-kit\src\store\createStore.js" />
-    <Content Include="react-redux-starter-kit\src\store\location.js" />
-    <Content Include="react-redux-starter-kit\src\store\reducers.js" />
-    <Content Include="react-redux-starter-kit\tests\components\Header\Header.spec.js" />
-    <Content Include="react-redux-starter-kit\tests\layouts\CoreLayout.spec.js" />
-    <Content Include="react-redux-starter-kit\tests\routes\Counter\components\Counter.spec.js" />
-    <Content Include="react-redux-starter-kit\tests\routes\Counter\index.spec.js" />
-    <Content Include="react-redux-starter-kit\tests\routes\Counter\modules\counter.spec.js" />
-    <Content Include="react-redux-starter-kit\tests\routes\Home\components\HomeView.spec.js" />
-    <Content Include="react-redux-starter-kit\tests\routes\Home\index.spec.js" />
-    <Content Include="react-redux-starter-kit\tests\store\createStore.spec.js" />
-    <Content Include="react-redux-starter-kit\tests\store\location.spec.js" />
-    <Content Include="react-redux-starter-kit\tests\test-bundler.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -205,35 +166,16 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Views\Web.config" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Default\Index.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="react-redux-starter-kit\.editorconfig" />
-    <Content Include="react-redux-starter-kit\.eslintignore" />
-    <Content Include="react-redux-starter-kit\.eslintrc" />
-    <Content Include="react-redux-starter-kit\.travis.yml" />
-    <Content Include="react-redux-starter-kit\CHANGELOG.md" />
-    <Content Include="react-redux-starter-kit\CONTRIBUTING.md" />
-    <Content Include="react-redux-starter-kit\LICENSE" />
-    <Content Include="react-redux-starter-kit\package.json" />
-    <Content Include="react-redux-starter-kit\README.md" />
-    <Content Include="react-redux-starter-kit\src\components\Header\Header.scss" />
-    <Content Include="react-redux-starter-kit\src\layouts\CoreLayout\CoreLayout.scss" />
-    <Content Include="react-redux-starter-kit\src\routes\Home\components\HomeView.scss" />
-    <Content Include="react-redux-starter-kit\src\styles\core.scss" />
-    <Content Include="react-redux-starter-kit\src\styles\_base.scss" />
-    <Content Include="react-redux-starter-kit\tests\.eslintrc" />
-    <Content Include="react-redux-starter-kit\yarn.lock" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
