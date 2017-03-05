@@ -41,9 +41,8 @@ namespace WebApplication1.Controllers
       //consumer uses the getconsumingenuerable
 
       var liveConnection = Observable.Create<string>(
-        o => Response.ClientDisconnectedToken.Register(() => {
-          o.OnCompleted();
-        })).Finally(() => queue.CompleteAdding());
+          o => Response.ClientDisconnectedToken.Register(o.OnCompleted))
+        .Finally(() => queue.CompleteAdding());
 
       var events = _messageSource.Messages();
       events.Connect();
