@@ -1,3 +1,3 @@
-var something = require('./a');
+import something from './a'
 
-console.log(something);
+console.log(something.a());
