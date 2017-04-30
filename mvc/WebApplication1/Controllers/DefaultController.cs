@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Reactive;
 using System.Reactive.Concurrency;
-using System.Reactive.Disposables;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -36,6 +34,11 @@ namespace WebApplication1.Controllers
         public async Task Messages()
         {
             Response.ContentType = "text/event-stream";
+            Response.CacheControl = "no-cache";
+            Response.Headers.Add("Connection", "keep-alive");
+            Response.StatusCode = 200;
+            await Response.FlushAsync();
+
             var queue = new BlockingCollection<string>(); //for producer/consumer pattern
             //producer adds items to the collection
             //consumer uses the getconsumingenuerable
@@ -57,8 +60,8 @@ namespace WebApplication1.Controllers
             {
                 var consumer = Task.Run(async () =>
                 {
-                    foreach (string message in queue.GetConsumingEnumerable()
-                    ) //forever looping until complete adding is called.
+                    foreach (string message in queue.GetConsumingEnumerable())
+                        //forever looping until complete adding is called.
                     {
                         var success = await _eventWriter.WriteEvent(message, Response).ConfigureAwait(false);
                         if (!success)
@@ -69,7 +72,6 @@ namespace WebApplication1.Controllers
                 });
                 await consumer.ConfigureAwait(false);
             }
-            Debug.WriteLine("Disconnected");
         }
     }
 }
