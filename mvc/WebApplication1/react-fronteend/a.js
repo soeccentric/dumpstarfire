@@ -1,6 +1,19 @@
-const a = () => 1 + 1;
+import angular from 'angular'
 
-module.exports = {
-  "key": "value1",
-  a: a
+export default angular
+    .module('uploadApp', [])
+    .factory('uploadService', uploadService)
+    .controller('UploadController', uploadController);
+
+    uploadController.$inject = ['uploadService'];
+    uploadService.$inject = ['$http', '$q','$window'];
+	
+function uploadController(uploadService) {
+    var vm = this;
+};
+
+function uploadService($http, $q, $window) {
+	return {
+		
+	};
 }

@@ -10,7 +10,7 @@ namespace WebApplication1
 			routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 			routes.MapMvcAttributeRoutes();
 			routes.LowercaseUrls = true;
-			//routes.MapRoute(name : null, url: "{controller}/{action}");
+			routes.MapRoute(name : null, url: "{controller}/{action}");
 		}
 	}
 }
